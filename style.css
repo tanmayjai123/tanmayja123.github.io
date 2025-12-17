@@ -1,0 +1,18 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(120deg, #1e3c72, #2a5298);
+  color: white;
+  text-align: center;
+}
+
+h1 {
+  margin-top: 80px;
+  font-size: 36px;
+}
+
+p {
+  font-size: 18px;
+  opacity: 0.9;
+}
