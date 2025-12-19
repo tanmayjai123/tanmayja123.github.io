@@ -1,18 +1,36 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(120deg, #1e3c72, #2a5298);
-  color: white;
-  text-align: center;
-}
 
-h1 {
-  margin-top: 80px;
-  font-size: 36px;
-}
+const hamburger = document.getElementById("hamburger");
 
-p {
-  font-size: 18px;
-  opacity: 0.9;
-}
+const navMenu = document.getElementById("nav-menu");
+
+/* HAMBURGER TOGGLE */
+
+hamburger.addEventListener("click", () => {
+
+  navMenu.classList.toggle("show");
+
+  hamburger.textContent =
+
+    hamburger.textContent === "☰" ? "✖" : "☰";
+
+});
+
+/* SMOOTH SCROLL + AUTO CLOSE */
+
+document.querySelectorAll('.nav-menu a').forEach(link => {
+
+  link.addEventListener('click', e => {
+
+    e.preventDefault();
+
+    const target = document.querySelector(link.getAttribute('href'));
+
+    target.scrollIntoView({ behavior: 'smooth' });
+
+    navMenu.classList.remove("show");
+
+    hamburger.textContent = "☰";
+
+  });
+
+});
