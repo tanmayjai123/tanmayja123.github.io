@@ -1,110 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+const hamburger = document.getElementById("hamburger");
+const navMenu = document.getElementById("navMenu");
 
-/* =====================
-   RESET
-===================== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* HAMBURGER TOGGLE */
+hamburger.addEventListener("click", () => {
+  navMenu.classList.toggle("show");
+  hamburger.textContent =
+    hamburger.textContent === "☰" ? "✖" : "☰";
+});
 
-/* =====================
-   BODY (DARK)
-===================== */
-body {
-  font-family: 'Poppins', sans-serif;
-  background: radial-gradient(circle at top, #0f172a, #020617);
-  color: #e5e7eb;
-  line-height: 1.6;
-}
+/* SMOOTH SCROLL + AUTO CLOSE */
+document.querySelectorAll(".nav-menu a").forEach(link => {
+  link.addEventListener("click", e => {
+    e.preventDefault();
 
-/* =====================
-   HEADER & NAVBAR
-===================== */
-header {
-  background: rgba(2, 6, 23, 0.85);
-  backdrop-filter: blur(10px);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  border-bottom: 1px solid rgba(148, 163, 184, 0.1);
-}
+    const target = document.querySelector(link.getAttribute("href"));
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth" });
+    }
 
-.navbar {
-  max-width: 1100px;
-  margin: auto;
-  padding: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-}
-
-.logo {
-  color: #38bdf8;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-}
-
-/* =====================
-   NAV LINKS
-===================== */
-.nav-menu {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
-}
-
-.nav-menu li a {
-  color: #cbd5f5;
-  text-decoration: none;
-  font-size: 0.95rem;
-  position: relative;
-}
-
-.nav-menu li a::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -5px;
-  width: 0%;
-  height: 2px;
-  background: #38bdf8;
-  transition: width 0.3s ease;
-}
-
-.nav-menu li a:hover::after {
-  width: 100%;
-}
-
-/* =====================
-   HAMBURGER
-===================== */
-.hamburger {
-  display: none;
-  font-size: 28px;
-  color: #e5e7eb;
-  cursor: pointer;
-}
-
-/* =====================
-   SECTIONS (GLASS LOOK)
-===================== */
-section {
-  max-width: 1100px;
-  margin: 2.5rem auto;
-  padding: 2rem;
-  background: rgba(15, 23, 42, 0.65);
-  backdrop-filter: blur(12px);
-  border-radius: 16px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(148, 163, 184, 0.08);
-}
-
-section h2 {
-  margin-bottom: 1rem;
-  font-size: 1.6rem;
+    navMenu.classList.remove("show");
+    hamburger.textContent = "☰";
+  });
+});  font-size: 1.6rem;
   color: #e0f2fe;
   border-left: 5px solid #38bdf8;
   padding-left: 12px;
